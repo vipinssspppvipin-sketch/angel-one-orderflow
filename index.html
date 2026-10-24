@@ -33,16 +33,1037 @@
       overflow-x: hidden;
     }
 
-    /* LOGIN + APP styles truncated for tool limit - full file is in artifacts */
+    /* ========== LOGIN ========== */
+    #login-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: radial-gradient(ellipse at top, #1a2332 0%, var(--bg) 70%);
+      padding: 20px;
+    }
+
+    .login-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+
+    .login-card h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .login-card .subtitle {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: 'JetBrains Mono', monospace;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--blue);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00c853, #00e676);
+      color: #000;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .btn-primary:hover { filter: brightness(1.1); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .error-msg {
+      background: var(--red-bg);
+      color: var(--red);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    .info-box {
+      background: rgba(41, 121, 255, 0.1);
+      border: 1px solid rgba(41, 121, 255, 0.25);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    /* ========== APP ========== */
+    #app {
+      display: none;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .symbol-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      flex-wrap: wrap;
+    }
+
+    .symbol-input {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      width: 180px;
+    }
+
+    .token-input {
+      width: 100px;
+    }
+
+    select.symbol-input {
+      width: auto;
+      min-width: 140px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--text-dim);
+    }
+
+    .status-dot.live { background: var(--green); box-shadow: 0 0 8px var(--green); }
+    .status-dot.error { background: var(--red); }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .btn-sm {
+      padding: 7px 14px;
+      font-size: 0.85rem;
+      border-radius: 6px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover { background: var(--bg3); }
+
+    /* ========== MAIN LAYOUT ========== */
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    @media (max-width: 1100px) {
+      .main { grid-template-columns: 1fr; }
+      .side-panel { display: none; }
+    }
+
+    /* ========== ORDER BOOK ========== */
+    .orderbook-section {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-right: 1px solid var(--border);
+    }
+
+    .ob-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg2);
+    }
+
+    .ob-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .ltp-block {
+      text-align: right;
+    }
+
+    .ltp-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .ltp-change {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+
+    .ltp-change.up { color: var(--green); }
+    .ltp-change.down { color: var(--red); }
+
+    .ob-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat-box {
+      background: var(--bg2);
+      padding: 10px 14px;
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 3px;
+    }
+
+    .stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    /* Ladder */
+    .ladder-container {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ladder-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      background: var(--bg3);
+      padding: 8px 16px;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ladder-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      padding: 6px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      position: relative;
+      transition: background 0.1s;
+    }
+
+    .ladder-row:hover { background: rgba(255,255,255,0.03); }
+
+    .ladder-row .bar {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      opacity: 0.15;
+      z-index: 0;
+    }
+
+    .ladder-row .bar.buy { left: 0; background: var(--green); }
+    .ladder-row .bar.sell { right: 0; background: var(--red); }
+
+    .ladder-row > span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .bid-qty { color: var(--green); text-align: right; }
+    .bid-orders { color: var(--text-dim); text-align: center; font-size: 0.75rem; }
+    .price-cell { text-align: center; font-weight: 600; }
+    .ask-orders { color: var(--text-dim); text-align: center; font-size: 0.75rem; }
+    .ask-qty { color: var(--red); text-align: left; }
+
+    .spread-row {
+      background: var(--bg3);
+      text-align: center;
+      padding: 8px;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ========== SIDE PANEL ========== */
+    .side-panel {
+      background: var(--bg2);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .panel-section {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    /* Imbalance meter */
+    .imbalance-meter {
+      height: 10px;
+      background: var(--bg3);
+      border-radius: 5px;
+      overflow: hidden;
+      display: flex;
+      margin-bottom: 8px;
+    }
+
+    .imb-buy {
+      background: linear-gradient(90deg, #00c853, #69f0ae);
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .imb-sell {
+      background: linear-gradient(90deg, #ff5252, #ff1744);
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .imb-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+
+    .imb-labels .buy { color: var(--green); }
+    .imb-labels .sell { color: var(--red); }
+
+    /* Quick symbols */
+    .quick-symbols {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .sym-chip {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .sym-chip:hover, .sym-chip.active {
+      border-color: var(--accent);
+      background: rgba(0, 230, 118, 0.1);
+      color: var(--accent);
+    }
+
+    /* Depth bars visual */
+    .depth-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .depth-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .depth-bar-row .price {
+      width: 70px;
+      text-align: right;
+    }
+
+    .depth-bar-track {
+      flex: 1;
+      height: 14px;
+      background: var(--bg3);
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .depth-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.25s ease;
+    }
+
+    .depth-bar-fill.buy { background: rgba(0, 200, 83, 0.5); }
+    .depth-bar-fill.sell { background: rgba(255, 23, 68, 0.5); }
+
+    .depth-bar-row .qty {
+      width: 60px;
+      text-align: left;
+      color: var(--text-dim);
+    }
+
+    /* Footer note */
+    .footer-note {
+      padding: 14px 18px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: auto;
+    }
+
+    /* Loading overlay */
+    .loading-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 14, 17, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 12px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Responsive ladder */
+    @media (max-width: 600px) {
+      .ladder-header, .ladder-row {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .bid-orders, .ask-orders { display: none; }
+      .ladder-header span:nth-child(2),
+      .ladder-header span:nth-child(4) { display: none; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- ==================== LOGIN ==================== -->
   <div id="login-screen">
     <div class="login-card">
       <h1>Angel One <span style="color:var(--accent)">Order Flow</span></h1>
       <p class="subtitle">Professional Market Depth & Order Book Dashboard</p>
-      <p style="color:#8b949e;margin-top:20px;">Full version available in the repository. Please download the complete HTML from the artifacts or use the Vercel link.</p>
+
+      <div class="error-msg" id="login-error"></div>
+
+      <div class="form-group">
+        <label>API Key</label>
+        <input type="text" id="api-key" placeholder="Your SmartAPI Key" autocomplete="off" />
+      </div>
+      <div class="form-group">
+        <label>Client Code</label>
+        <input type="text" id="client-code" placeholder="e.g. A12345" autocomplete="off" />
+      </div>
+      <div class="form-group">
+        <label>MPIN / Password</label>
+        <input type="password" id="password" placeholder="Your MPIN" autocomplete="off" />
+      </div>
+      <div class="form-group">
+        <label>TOTP (6-digit)</label>
+        <input type="text" id="totp" placeholder="Current TOTP from Authenticator" maxlength="6" autocomplete="off" />
+      </div>
+
+      <button class="btn btn-primary" id="login-btn" onclick="doLogin()">
+        Connect to Angel One
+      </button>
+
+      <div class="info-box">
+        <strong>How to get credentials:</strong><br>
+        1. Go to <a href="https://smartapi.angelone.in" target="_blank" style="color:var(--blue)">smartapi.angelone.in</a><br>
+        2. Create an App → copy API Key<br>
+        3. Enable TOTP in Angel One app → use Authenticator<br>
+        4. Use Client Code + MPIN + current TOTP
+      </div>
     </div>
   </div>
+
+  <!-- ==================== APP ==================== -->
+  <div id="app">
+    <header>
+      <div class="logo">Angel<span>One</span> OrderFlow</div>
+
+      <div class="symbol-bar">
+        <select class="symbol-input" id="exchange-select">
+          <option value="NSE">NSE</option>
+          <option value="NFO">NFO</option>
+          <option value="BSE">BSE</option>
+        </select>
+        <input class="symbol-input" id="symbol-input" placeholder="Symbol e.g. SBIN-EQ" value="SBIN-EQ" />
+        <input class="symbol-input token-input" id="token-input" placeholder="Token" value="3045" />
+        <button class="btn btn-sm btn-primary" onclick="subscribeSymbol()">Load Depth</button>
+        <div style="display:flex;align-items:center;gap:6px;margin-left:8px;">
+          <div class="status-dot" id="status-dot"></div>
+          <span id="status-text" style="font-size:0.8rem;color:var(--text-dim)">Disconnected</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <span id="user-name">—</span>
+        <button class="btn btn-sm btn-outline" onclick="logout()">Logout</button>
+      </div>
+    </header>
+
+    <div class="main">
+      <!-- ORDER BOOK -->
+      <div class="orderbook-section" style="position:relative">
+        <div class="ob-header">
+          <div>
+            <div class="ob-title" id="ob-symbol">SBIN-EQ</div>
+            <div style="font-size:0.75rem;color:var(--text-dim);margin-top:2px" id="ob-exchange">NSE • Token 3045</div>
+          </div>
+          <div class="ltp-block">
+            <div class="ltp-price" id="ltp-price">—</div>
+            <div class="ltp-change" id="ltp-change">—</div>
+          </div>
+        </div>
+
+        <div class="ob-stats">
+          <div class="stat-box">
+            <div class="stat-label">Open</div>
+            <div class="stat-value" id="stat-open">—</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">High</div>
+            <div class="stat-value" id="stat-high" style="color:var(--green)">—</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Low</div>
+            <div class="stat-value" id="stat-low" style="color:var(--red)">—</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Volume</div>
+            <div class="stat-value" id="stat-vol">—</div>
+          </div>
+        </div>
+
+        <div class="ladder-container" id="ladder">
+          <div class="ladder-header">
+            <span style="text-align:right">Bid Qty</span>
+            <span style="text-align:center">Orders</span>
+            <span style="text-align:center">Price</span>
+            <span style="text-align:center">Orders</span>
+            <span style="text-align:left">Ask Qty</span>
+          </div>
+          <div id="ladder-body">
+            <!-- rows injected here -->
+          </div>
+        </div>
+
+        <div id="loading-overlay" class="loading-overlay" style="display:none">
+          <div class="spinner"></div>
+          Fetching market depth...
+        </div>
+      </div>
+
+      <!-- SIDE PANEL -->
+      <div class="side-panel">
+        <div class="panel-section">
+          <div class="panel-title">Order Flow Imbalance</div>
+          <div class="imbalance-meter">
+            <div class="imb-buy" id="imb-buy" style="width:50%"></div>
+            <div class="imb-sell" id="imb-sell" style="width:50%"></div>
+          </div>
+          <div class="imb-labels">
+            <span class="buy" id="tot-buy">Buy: —</span>
+            <span class="sell" id="tot-sell">Sell: —</span>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <div class="panel-title">Quick Symbols</div>
+          <div class="quick-symbols" id="quick-symbols">
+            <div class="sym-chip active" data-sym="SBIN-EQ" data-token="3045" data-ex="NSE">SBIN</div>
+            <div class="sym-chip" data-sym="RELIANCE-EQ" data-token="2885" data-ex="NSE">RELIANCE</div>
+            <div class="sym-chip" data-sym="TCS-EQ" data-token="11536" data-ex="NSE">TCS</div>
+            <div class="sym-chip" data-sym="INFY-EQ" data-token="1594" data-ex="NSE">INFY</div>
+            <div class="sym-chip" data-sym="HDFCBANK-EQ" data-token="1333" data-ex="NSE">HDFCBANK</div>
+            <div class="sym-chip" data-sym="ICICIBANK-EQ" data-token="4963" data-ex="NSE">ICICIBANK</div>
+            <div class="sym-chip" data-sym="NIFTY" data-token="99926000" data-ex="NSE">NIFTY 50</div>
+            <div class="sym-chip" data-sym="BANKNIFTY" data-token="99926009" data-ex="NSE">BANKNIFTY</div>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <div class="panel-title">Bid Depth Visual</div>
+          <div class="depth-visual" id="bid-visual"></div>
+        </div>
+
+        <div class="panel-section">
+          <div class="panel-title">Ask Depth Visual</div>
+          <div class="depth-visual" id="ask-visual"></div>
+        </div>
+
+        <div class="footer-note">
+          Data via Angel One SmartAPI • FULL Quote mode<br>
+          Polls every 1.5s (rate-limit friendly)<br>
+          Best used during market hours (9:15 – 15:30 IST)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==================== STATE ====================
+    const state = {
+      apiKey: '',
+      clientCode: '',
+      jwtToken: '',
+      feedToken: '',
+      refreshToken: '',
+      symbol: 'SBIN-EQ',
+      token: '3045',
+      exchange: 'NSE',
+      pollInterval: null,
+      lastLtp: 0
+    };
+
+    const BASE = 'https://apiconnect.angelone.in';
+
+    // ==================== HELPERS ====================
+    function headers(auth = true) {
+      const h = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-UserType': 'USER',
+        'X-SourceID': 'WEB',
+        'X-ClientLocalIP': '127.0.0.1',
+        'X-ClientPublicIP': '127.0.0.1',
+        'X-MACAddress': '00:00:00:00:00:00',
+        'X-PrivateKey': state.apiKey
+      };
+      if (auth && state.jwtToken) {
+        h['Authorization'] = 'Bearer ' + state.jwtToken;
+      }
+      return h;
+    }
+
+    function formatNum(n) {
+      if (n == null || isNaN(n)) return '—';
+      n = Number(n);
+      if (n >= 1e7) return (n / 1e7).toFixed(2) + ' Cr';
+      if (n >= 1e5) return (n / 1e5).toFixed(2) + ' L';
+      if (n >= 1000) return n.toLocaleString('en-IN');
+      return n.toString();
+    }
+
+    function formatPrice(p) {
+      if (p == null || isNaN(p)) return '—';
+      return Number(p).toFixed(2);
+    }
+
+    // ==================== LOGIN ====================
+    async function doLogin() {
+      const apiKey = document.getElementById('api-key').value.trim();
+      const clientCode = document.getElementById('client-code').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const totp = document.getElementById('totp').value.trim();
+      const errEl = document.getElementById('login-error');
+      const btn = document.getElementById('login-btn');
+
+      errEl.style.display = 'none';
+
+      if (!apiKey || !clientCode || !password || !totp) {
+        errEl.textContent = 'Please fill all fields';
+        errEl.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Connecting...';
+
+      try {
+        const res = await fetch(BASE + '/rest/auth/angelbroking/user/v1/loginByPassword', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-UserType': 'USER',
+            'X-SourceID': 'WEB',
+            'X-ClientLocalIP': '127.0.0.1',
+            'X-ClientPublicIP': '127.0.0.1',
+            'X-MACAddress': '00:00:00:00:00:00',
+            'X-PrivateKey': apiKey
+          },
+          body: JSON.stringify({
+            clientcode: clientCode,
+            password: password,
+            totp: totp
+          })
+        });
+
+        const data = await res.json();
+
+        if (!data.status || !data.data) {
+          throw new Error(data.message || data.errorcode || 'Login failed');
+        }
+
+        state.apiKey = apiKey;
+        state.clientCode = clientCode;
+        state.jwtToken = data.data.jwtToken;
+        state.refreshToken = data.data.refreshToken;
+        state.feedToken = data.data.feedToken || '';
+
+        // Profile
+        let name = clientCode;
+        try {
+          const pRes = await fetch(BASE + '/rest/secure/angelbroking/user/v1/getProfile', {
+            method: 'GET',
+            headers: headers(true)
+          });
+          const pData = await pRes.json();
+          if (pData.status && pData.data) {
+            name = pData.data.name || clientCode;
+          }
+        } catch (e) {}
+
+        document.getElementById('user-name').textContent = name;
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('app').style.display = 'flex';
+
+        // Auto load default
+        subscribeSymbol();
+
+      } catch (err) {
+        console.error(err);
+        let msg = err.message || 'Login failed';
+        if (msg.includes('Failed to fetch') || msg.includes('CORS') || msg.includes('NetworkError')) {
+          msg = 'CORS / Network error. Angel One API blocks direct browser calls from file:// or unknown origins. Solution: Host this file on localhost (python -m http.server) or use a small backend proxy.';
+        }
+        errEl.textContent = msg;
+        errEl.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Connect to Angel One';
+      }
+    }
+
+    // ==================== MARKET DATA ====================
+    async function fetchQuote() {
+      if (!state.jwtToken || !state.token) return;
+
+      try {
+        const body = {
+          mode: 'FULL',
+          exchangeTokens: {
+            [state.exchange]: [state.token]
+          }
+        };
+
+        const res = await fetch(BASE + '/rest/secure/angelbroking/market/v1/quote', {
+          method: 'POST',
+          headers: headers(true),
+          body: JSON.stringify(body)
+        });
+
+        const data = await res.json();
+
+        if (!data.status || !data.data || !data.data.fetched || !data.data.fetched.length) {
+          setStatus(false, data.message || 'No data');
+          return;
+        }
+
+        const q = data.data.fetched[0];
+        updateUI(q);
+        setStatus(true, 'Live');
+
+      } catch (err) {
+        console.error(err);
+        setStatus(false, 'Error');
+      }
+    }
+
+    function updateUI(q) {
+      const ltp = q.ltp;
+      const prevClose = q.close;
+      const change = ltp - prevClose;
+      const pct = prevClose ? (change / prevClose * 100) : 0;
+
+      document.getElementById('ltp-price').textContent = formatPrice(ltp);
+      const chEl = document.getElementById('ltp-change');
+      chEl.textContent = `${change >= 0 ? '+' : ''}${change.toFixed(2)} (${pct.toFixed(2)}%)`;
+      chEl.className = 'ltp-change ' + (change >= 0 ? 'up' : 'down');
+
+      document.getElementById('stat-open').textContent = formatPrice(q.open);
+      document.getElementById('stat-high').textContent = formatPrice(q.high);
+      document.getElementById('stat-low').textContent = formatPrice(q.low);
+      document.getElementById('stat-vol').textContent = formatNum(q.tradeVolume);
+
+      // Depth
+      const buy = (q.depth && q.depth.buy) ? q.depth.buy : [];
+      const sell = (q.depth && q.depth.sell) ? q.depth.sell : [];
+
+      renderLadder(buy, sell, ltp);
+      renderImbalance(q.totBuyQuan, q.totSellQuan);
+      renderDepthVisual(buy, sell);
+
+      document.getElementById('loading-overlay').style.display = 'none';
+    }
+
+    function renderLadder(buy, sell, ltp) {
+      const body = document.getElementById('ladder-body');
+      const maxLevels = Math.max(buy.length, sell.length, 5);
+      let maxQty = 1;
+
+      for (let i = 0; i < maxLevels; i++) {
+        if (buy[i]) maxQty = Math.max(maxQty, buy[i].quantity || 0);
+        if (sell[i]) maxQty = Math.max(maxQty, sell[i].quantity || 0);
+      }
+
+      let html = '';
+
+      // Sell side first (highest price at top) — reverse
+      const sells = [...sell].reverse();
+      for (let i = 0; i < sells.length; i++) {
+        const s = sells[i];
+        const pct = ((s.quantity || 0) / maxQty) * 100;
+        html += `
+          <div class="ladder-row">
+            <div class="bar sell" style="width:${pct}%"></div>
+            <span class="bid-qty"></span>
+            <span class="bid-orders"></span>
+            <span class="price-cell" style="color:var(--red)">${formatPrice(s.price)}</span>
+            <span class="ask-orders">${s.orders || '—'}</span>
+            <span class="ask-qty">${formatNum(s.quantity)}</span>
+          </div>`;
+      }
+
+      // Spread
+      const bestBid = buy[0] ? buy[0].price : null;
+      const bestAsk = sell[0] ? sell[0].price : null;
+      let spreadText = '—';
+      if (bestBid && bestAsk) {
+        const spread = bestAsk - bestBid;
+        spreadText = `Spread: ${spread.toFixed(2)}  |  Mid: ${((bestBid + bestAsk) / 2).toFixed(2)}`;
+      }
+      html += `<div class="spread-row">${spreadText}</div>`;
+
+      // Buy side
+      for (let i = 0; i < buy.length; i++) {
+        const b = buy[i];
+        const pct = ((b.quantity || 0) / maxQty) * 100;
+        html += `
+          <div class="ladder-row">
+            <div class="bar buy" style="width:${pct}%"></div>
+            <span class="bid-qty">${formatNum(b.quantity)}</span>
+            <span class="bid-orders">${b.orders || '—'}</span>
+            <span class="price-cell" style="color:var(--green)">${formatPrice(b.price)}</span>
+            <span class="ask-orders"></span>
+            <span class="ask-qty"></span>
+          </div>`;
+      }
+
+      body.innerHTML = html;
+    }
+
+    function renderImbalance(totBuy, totSell) {
+      totBuy = Number(totBuy) || 0;
+      totSell = Number(totSell) || 0;
+      const total = totBuy + totSell || 1;
+      const buyPct = (totBuy / total) * 100;
+      const sellPct = (totSell / total) * 100;
+
+      document.getElementById('imb-buy').style.width = buyPct + '%';
+      document.getElementById('imb-sell').style.width = sellPct + '%';
+      document.getElementById('tot-buy').textContent = 'Buy: ' + formatNum(totBuy);
+      document.getElementById('tot-sell').textContent = 'Sell: ' + formatNum(totSell);
+    }
+
+    function renderDepthVisual(buy, sell) {
+      const maxQ = Math.max(
+        ...buy.map(b => b.quantity || 0),
+        ...sell.map(s => s.quantity || 0),
+        1
+      );
+
+      let bidHtml = '';
+      buy.slice(0, 5).forEach(b => {
+        const pct = ((b.quantity || 0) / maxQ) * 100;
+        bidHtml += `
+          <div class="depth-bar-row">
+            <span class="price" style="color:var(--green)">${formatPrice(b.price)}</span>
+            <div class="depth-bar-track"><div class="depth-bar-fill buy" style="width:${pct}%"></div></div>
+            <span class="qty">${formatNum(b.quantity)}</span>
+          </div>`;
+      });
+      document.getElementById('bid-visual').innerHTML = bidHtml || '<div style="color:var(--text-dim);font-size:0.8rem">No data</div>';
+
+      let askHtml = '';
+      sell.slice(0, 5).forEach(s => {
+        const pct = ((s.quantity || 0) / maxQ) * 100;
+        askHtml += `
+          <div class="depth-bar-row">
+            <span class="price" style="color:var(--red)">${formatPrice(s.price)}</span>
+            <div class="depth-bar-track"><div class="depth-bar-fill sell" style="width:${pct}%"></div></div>
+            <span class="qty">${formatNum(s.quantity)}</span>
+          </div>`;
+      });
+      document.getElementById('ask-visual').innerHTML = askHtml || '<div style="color:var(--text-dim);font-size:0.8rem">No data</div>';
+    }
+
+    // ==================== SUBSCRIBE ====================
+    function subscribeSymbol() {
+      state.symbol = document.getElementById('symbol-input').value.trim().toUpperCase();
+      state.token = document.getElementById('token-input').value.trim();
+      state.exchange = document.getElementById('exchange-select').value;
+
+      if (!state.token) {
+        alert('Please enter Symbol Token');
+        return;
+      }
+
+      document.getElementById('ob-symbol').textContent = state.symbol;
+      document.getElementById('ob-exchange').textContent = `${state.exchange} • Token ${state.token}`;
+      document.getElementById('loading-overlay').style.display = 'flex';
+
+      // Highlight chip
+      document.querySelectorAll('.sym-chip').forEach(c => {
+        c.classList.toggle('active', c.dataset.token === state.token);
+      });
+
+      if (state.pollInterval) clearInterval(state.pollInterval);
+      fetchQuote();
+      state.pollInterval = setInterval(fetchQuote, 1500);
+    }
+
+    function setStatus(live, text) {
+      const dot = document.getElementById('status-dot');
+      const txt = document.getElementById('status-text');
+      dot.className = 'status-dot ' + (live ? 'live' : 'error');
+      txt.textContent = text;
+    }
+
+    function logout() {
+      if (state.pollInterval) clearInterval(state.pollInterval);
+      state.jwtToken = '';
+      document.getElementById('app').style.display = 'none';
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('totp').value = '';
+    }
+
+    // Quick symbols
+    document.getElementById('quick-symbols').addEventListener('click', e => {
+      const chip = e.target.closest('.sym-chip');
+      if (!chip) return;
+      document.getElementById('symbol-input').value = chip.dataset.sym;
+      document.getElementById('token-input').value = chip.dataset.token;
+      document.getElementById('exchange-select').value = chip.dataset.ex;
+      subscribeSymbol();
+    });
+
+    // Enter key on login
+    document.getElementById('totp').addEventListener('keydown', e => {
+      if (e.key === 'Enter') doLogin();
+    });
+  </script>
 </body>
 </html>
